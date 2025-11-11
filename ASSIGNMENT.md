@@ -16,4 +16,5 @@
 - Order of the routes matter a lot
 - Install postman app and make a workspace/collection > test API call
 - app.use vs app.get
+- Write logic GET, POST, PATCH, PUT ,DELETE API Callsn and test them on postman
 - 
