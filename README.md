@@ -3,9 +3,10 @@
 - What is package.json, package-lock.json, node_modules?
 - What is the difference between package.json VS package-lock.json?
 - What is ^ , ~ ?
+- What is the use of "-g" while npm install
 - Difference between ~ vs ^ ?
-- create a server
+- create a server.
 - Listen to port 7777
 - Make request handlers for /test, /hello?
-- Install nodemon and update scripts inside package.json
+- Install nodemon and update scripts inside package.json.
 
