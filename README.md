@@ -1,0 +1,11 @@
+- Install Express server
+- What is dependencies?
+- What is package.json, package-lock.json, node_modules?
+- What is the difference between package.json VS package-lock.json?
+- What is ^ , ~ ?
+- Difference between ~ vs ^ ?
+- create a server
+- Listen to port 7777
+- Make request handlers for /test, /hello?
+- Install nodemon and update scripts inside package.json
+
