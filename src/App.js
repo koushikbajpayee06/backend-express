@@ -2,29 +2,18 @@ const express = require('express');
 
 const app = express();
 
-app.use(
+app.get(
     '/user',
     (req, res, next)=>{
-    next();
+        console.log("request handler-1")
+        next()
+    },
+);
+app.get(
+    '/user',
+    (req, res, next)=>{
     console.log("request handler-1")
-    // res.send("Response-1!! ");
-},
-    (req, res, next)=>{
-        console.log("Route Handler-2");
-        // res.send("Response-2!!");
-        next()
-    }
-,
-    (req, res, next)=>{
-        console.log("Route Handler-3");
-        // res.send("Response-3!!");
-        next()
-    }
-,
-    (req, res, next)=>{
-        console.log("Route Handler-4");
-        // res.send("Response-4!!");
-        next()
+    res.send("Response-2")
     }
 );
 
