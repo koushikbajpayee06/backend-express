@@ -2,27 +2,17 @@ const express = require('express');
 
 const app = express();
 
-const { adminAuth,userAuth } = require("./middlewares/auth");
+app.get("/getUserData",(req,res)=>{
 
-
-app.use('/admin',adminAuth);
-
-
-app.get('/user',userAuth, (req, res, next)=>{
-    res.send("User Data Sent");
-});
-app.get('/admin/getAllData',(req, res, next)=>{
-    res.send("All Data Sent");
+    throw new Error("abcde");
+    res.send("User Data Send");
 });
 
-app.get('/admin/updateAllData',(req, res, next)=>{
-    res.send("Update an User");
-});
-
-app.get('/admin/deleteAllData',(req, res, next)=>{
-    res.send("Deleted an user");
-});
-
+app.use('/',(err, req, res,next)=>{
+    if(err){
+        res.status(500).send("Somthing went wrong")
+    }
+})
 
 
 app.listen(7777,()=>{
