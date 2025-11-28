@@ -27,4 +27,7 @@
 - next()
 - next function and errors along with res.send()
 - app.use("/route",rH,[rH2,rH3], rH4, rH5);
-
+- What is a middleware.
+- How express Js Basically Handles requests behind the scenes.
+- Difference b/w app.use and app.all.
+- 
