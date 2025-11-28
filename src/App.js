@@ -9,7 +9,7 @@ app.use('/admin',adminAuth);
 
 
 app.get('/user',userAuth, (req, res, next)=>{
-    res.send("All Data Sent");
+    res.send("User Data Sent");
 });
 app.get('/admin/getAllData',(req, res, next)=>{
     res.send("All Data Sent");

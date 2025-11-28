@@ -11,7 +11,7 @@ const adminAuth = (req, res, next)=>{
 };
 const userAuth = (req, res, next)=>{
     console.log("Admin auth is getting Checked!!!!");
-    const token = "e";
+    const token = "xyze";
     const isUserAuthorized = token ==="xyze";
     if(!isUserAuthorized){
         res.status(401).send("Unauthorized request");
