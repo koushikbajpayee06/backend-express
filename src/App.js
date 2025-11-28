@@ -3,9 +3,12 @@ const express = require('express');
 const app = express();
 
 app.get("/getUserData",(req,res)=>{
-
-    throw new Error("abcde");
-    res.send("User Data Send");
+    try{
+        throw new Error("dugkdksb");
+        res.send("User Data Send")
+    }catch(err){
+        res.status(500).send("Some Error contact support team");
+    }
 });
 
 app.use('/',(err, req, res,next)=>{
