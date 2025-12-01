@@ -39,3 +39,6 @@
 - Connect your application to the Database "connection-url"/revDevTinder
 - Call the connectDB function and connect to a database before starting application on 7777.
 - Create a User Schema & user Model
+- Create a POST/signup API to data to database
+- Push some documents using API calls from Postman
+- Error Handling using try, catch 
