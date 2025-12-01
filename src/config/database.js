@@ -6,9 +6,6 @@ const connectDB = async () =>{
         "mongodb+srv://namastedev:fsmtGY1IfU6h4Ypp@namastenode.uwpmhgp.mongodb.net/revDevTinder"
     );
 }
+module.exports= connectDB;
 
-connectDB().then(()=>{
-    console.log("Database connection established...")
-}).catch(err=>{
-    console.error("Database cant be connected");
-})
+
