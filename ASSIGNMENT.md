@@ -38,5 +38,4 @@
 - Install Mongoose libraty
 - Connect your application to the Database "connection-url"/revDevTinder
 - Call the connectDB function and connect to a database before starting application on 7777.
-
-- 
+- Create a User Schema & user Model
