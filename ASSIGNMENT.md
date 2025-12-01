@@ -32,3 +32,11 @@
 - Difference b/w app.use and app.all.
 - Write a dummy user auth middleware for all user routes, except /user/login
 - Error Handling using app.use('/',(err,req,res,next)=>{});
+
+## Ep-06
+- Create a free cluster on MongoDB official website (Mongo Atlas)
+- Install Mongoose libraty
+- Connect your application to the Database "connection-url"/revDevTinder
+- Call the connectDB function and connect to a database before starting application on 7777.
+
+- 
