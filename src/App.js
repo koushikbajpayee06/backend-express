@@ -21,6 +21,23 @@ app.post('/signup', async (req,res)=>{
     }
 
 });
+// Get user by email
+app.get('/user',async(req,res)=>{
+    const userEmail = req.body.emailId;
+
+    try{
+         const user = await User.find({emailId: userEmail});
+         res.send(user)
+    }catch(error){
+        res.status(400).send("Something went wrong",error.message)
+    }
+
+})
+//  Feed API -GET /feed -get all the users from the database
+
+app.get('/feed',(req, res)=>{
+    
+})
 
 
 

@@ -44,4 +44,6 @@
 - Error Handling using try, catch 
 
 ## Ep-07
-- 
+- JS object vs JSON(difference)
+- Add the express.json middleware to your app
+- Make Your signup API dynamic recive data from the end user 
