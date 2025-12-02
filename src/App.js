@@ -30,7 +30,7 @@ app.get('/user',async(req,res)=>{
          res.send(user)
     }catch(error){
         res.status(400).send("Something went wrong",error.message)
-    }
+    };
 
 })
 //  Feed API -GET /feed -get all the users from the database
