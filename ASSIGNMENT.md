@@ -51,3 +51,5 @@
 - API - Get user be Email
 - API - Feed api - GET/feed -get all the users from database
 - API - Get user By ID
+- Create a delete user API
+- Difference b/w PATCH and PUT

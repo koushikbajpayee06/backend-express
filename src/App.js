@@ -51,10 +51,11 @@ app.get('/feed',async(req, res)=>{
     }
 });
 
+// Delete a user from the database
 app.delete('/user',async(req,res)=>{
-    console.log(req.body)
+    // console.log(req.body)
     const userId = req.body.userId;
-    console.log(userId);
+    // console.log(userId);
     try{
         const user = await User.findByIdAndDelete(userId);
         res.send("User deleated successfully");
@@ -62,6 +63,24 @@ app.delete('/user',async(req,res)=>{
         res.status(404).send("Unable to delete",error.message)
     }
 })
+
+// Update data of the user
+app.patch("/user", async(req,res)=>{
+    const userId = req.body.userId;
+    const data = req.body;
+    // console.log(data);
+    try{
+        const user = await User.findByIdAndUpdate({_id:userId},data,{
+            returnDocument:"before"
+        });
+        console.log(user)
+        res.send("User updated successfully");
+    }catch(error){
+        res.status(404).send("Unable to delete",error.message)
+    }
+})
+
+
 
 connectDB()
     .then(()=>{
