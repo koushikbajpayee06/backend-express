@@ -9,6 +9,7 @@ const adminAuth = (req, res, next)=>{
         next();
     }
 };
+
 const userAuth = (req, res, next)=>{
     console.log("Admin auth is getting Checked!!!!");
     const token = "xyze";
