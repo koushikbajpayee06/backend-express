@@ -25,8 +25,8 @@ app.post('/signup', async (req,res)=>{
 app.get('/user',async(req,res)=>{
     const userEmail = req.body.emailId;
     try{
-         const user = await User.find({emailId: userEmail});
-         
+        //  const user = await User.find({emailId: userEmail});
+        const user = await User.findOne({emailId:userEmail});       
          if(user.length === 0){
             res.status(404).send('User not found');
          }else{
@@ -37,8 +37,8 @@ app.get('/user',async(req,res)=>{
     };
 
 })
-//  Feed API -GET /feed -get all the users from the database
 
+//  Feed API -GET /feed -get all the users from the database 
 app.get('/feed',async(req, res)=>{
     try{
         const users = await User.find({});
@@ -49,9 +49,19 @@ app.get('/feed',async(req, res)=>{
     }catch(error){
         res.status(400).send("Somthing went wrong", error.message)
     }
+});
+
+app.delete('/user',async(req,res)=>{
+    console.log(req.body)
+    const userId = req.body.userId;
+    console.log(userId);
+    try{
+        const user = await User.findByIdAndDelete(userId);
+        res.send("User deleated successfully");
+    }catch(error){
+        res.status(404).send("Unable to delete",error.message)
+    }
 })
-
-
 
 connectDB()
     .then(()=>{
