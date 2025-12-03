@@ -53,3 +53,9 @@
 - API - Get user By ID
 - Create a delete user API
 - Difference b/w PATCH and PUT
+- API -Update a user
+- Explore the Mongoose Documention for Model
+- what are options in a Model.findOneAndUpdate method, explore more about it
+- API - Update the user API with email ID
+
+
