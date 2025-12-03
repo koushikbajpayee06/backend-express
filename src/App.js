@@ -77,7 +77,7 @@ app.patch("/user", async(req,res)=>{
         console.log(user)
         res.send("User updated successfully");
     }catch(error){
-        res.status(404).send("Unable to update",+error.message)
+        res.status(404).send("Unable to update",error.message)
     }
 })
 
