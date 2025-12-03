@@ -71,12 +71,13 @@ app.patch("/user", async(req,res)=>{
     // console.log(data);
     try{
         const user = await User.findByIdAndUpdate({_id:userId},data,{
-            returnDocument:"before"
+            returnDocument:"after",
+            runValidators: true,
         });
         console.log(user)
         res.send("User updated successfully");
     }catch(error){
-        res.status(404).send("Unable to delete",error.message)
+        res.status(404).send("Unable to update",+error.message)
     }
 })
 
