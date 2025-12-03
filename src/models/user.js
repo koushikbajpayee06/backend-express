@@ -3,22 +3,43 @@ const mongoose = require('mongoose');
 
 const userSchma = mongoose.Schema({
     firstName:{
-        type:String
+        type:String,
+        required: true,
+        minLength: 4,
+        maxLength:50,
     },
     lastName:{
-        type:String
+        type:String,
+        required: true,
     },
     emailId:{
-        type: String
+        type: String,
+        required:true,
+        unique:true,
+        lowercase:true,
+        trim:true,
     },
     password:{
-        type:String
+        type:String,
+        required:true,
     },
     age:{
-        type:Number
+        type:Number,
+        min:18,
     },
     gender:{
         type:String
+    },
+    photoUrl:{
+        type: String,
+        default:"https://www.fenae.org.br/portal/lumis-theme/br/org/fenae/portal/theme/fenae-portal/img/dummy-picture.png"
+    },
+    about:{
+        type:String,
+        default:"This is a default about of the user!"
+    },
+    skills:{
+        type:[String],
     }
 });
 
