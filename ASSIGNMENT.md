@@ -59,6 +59,13 @@
 - API - Update the user API with email ID
 
 ## Ep-08
+- Explore schematype options from the documentation
+- add required, unique, lowercase, uppercase, min, minLength,trim
+- Add default
+- Create a custom validate function for gender
+- Improve the DB Schema - PUT all appropiate validations on each field in schema
+- Add timestamps to the userSchema
+- 
 
 
 
