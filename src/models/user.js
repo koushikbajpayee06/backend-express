@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose');
+const validator = require('validator')
 
 const userSchma = mongoose.Schema({
     firstName:{
@@ -18,10 +19,20 @@ const userSchma = mongoose.Schema({
         unique:true,
         lowercase:true,
         trim:true,
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error("Invalid email addressc" + value);
+            }
+        }
     },
     password:{
         type:String,
         required:true,
+        validator(value){
+            if(!validator.isStrongPassword(value)){
+                throw new Error("Weak password: "+ value)
+            }
+        }
     },
     age:{
         type:Number,
@@ -37,7 +48,12 @@ const userSchma = mongoose.Schema({
     },
     photoUrl:{
         type: String,
-        default:"https://www.fenae.org.br/portal/lumis-theme/br/org/fenae/portal/theme/fenae-portal/img/dummy-picture.png"
+        default:"https://www.fenae.org.br/portal/lumis-theme/br/org/fenae/portal/theme/fenae-portal/img/dummy-picture.png",
+        validate(value){
+            if(!validator.isURL(value)){
+                throw new Error("Invalid photo URL: "+ value)
+            }
+        }
     },
     about:{
         type:String,
