@@ -59,6 +59,7 @@
 - API - Update the user API with email ID
 
 ## Ep-08
+
 - Explore schematype options from the documentation
 - add required, unique, lowercase, uppercase, min, minLength,trim
 - Add default
