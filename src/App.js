@@ -60,14 +60,14 @@ app.delete("/user", async (req, res) => {
 });
 
 // Update data of the user
-app.patch("/user", async (req, res) => {
-  const userId = req.body.userId;
+app.patch("/user/:userId", async (req, res) => {
+  const userId = req.params?.userId;
+  console.log(userId)
   const data = req.body;
   // console.log(isUpdateAllowed)
   // console.log(data);
   try {
     const ALLOWED_UPDATE = [
-      "userId",
       "photoUrl",
       "about",
       "gender",
