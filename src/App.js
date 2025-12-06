@@ -4,8 +4,11 @@ const app = express();
 const User = require("./models/user");
 const {validationSignUpData} = require('./utills/validation');
 const bcrypt = require("bcrypt")
+const cookieParser = require('cookie-parser')
+const jwt = require('jsonwebtoken');
 
 app.use(express.json());
+app.use(cookieParser())
 
 app.post("/signup", async (req, res) => {
   try {
@@ -32,19 +35,39 @@ app.post('/login', async(req,res)=>{
     const {emailId, password} = req.body;
     const user = await User.findOne({emailId:emailId})
     if(!user){
-      throw new Error("Email id is not present in DB")
+      throw new Error("Invalid Credentials")
     }
 
     const isPasswordValid = await bcrypt.compare(password,  user.password);
     if(isPasswordValid){
+      // Create a jwt token
+      const token = jwt.sign({ _id:user._id }, 'DEV@Tinder$790');
+      console.log(token);
+      // Add the token to cookie
+      res.cookie("token",token);
       res.send("Login Successful!!!!")
     }else{
-      throw new Error("Password is not correct");
+      throw new Error("Invalid Credentials");
     }
   }catch(err){
-    res.status(404).send("Error "+ err.message)
+    res.status(404).send("ERROR "+ err.message)
   }
+});
+
+app.post('/profile', async(req,res)=>{
+  const cookies = req.cookies;
+  const {token} = cookies;
+  // Validate my token
+  const decodedMessage = await jwt.verify(token,"DEV@Tinder$790",)
+  // console.log(decodedMessage);
+  const {_id} = decodedMessage
+  console.log("Logged in user is: "+_id);
+
+  const user = await User.findById(_id)
+
+  res.send(user);
 })
+
 // Get user by email
 app.get("/user", async (req, res) => {
   const userEmail = req.body.emailId;
@@ -61,7 +84,7 @@ app.get("/user", async (req, res) => {
   }
 });
 
-//  Feed API -GET /feed -get all the users from the database
+// Feed API - GET/feed - get all the users from the database
 app.get("/feed", async (req, res) => {
   try {
     const users = await User.find({});
@@ -122,8 +145,6 @@ app.patch("/user/:userId", async (req, res) => {
     res.status(404).send("Update Failed:"+ err.message);
   }
 });
-
-
 
 connectDB()
   .then(() => {
