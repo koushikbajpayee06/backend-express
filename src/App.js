@@ -2,19 +2,21 @@ const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
 const User = require("./models/user");
+const {validationSignUpData} = require('./utills/validation')
 
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
-  // console.log(req.body);
-  // Creating a new instance of a User Model
-  const user = new User(req.body);
+
+
 
   try {
+    validationSignUpData(req);
+    const user = new User(req.body);
     await user.save();
     res.send("User added successfully");
   } catch (err) {
-    res.status(400).send("Error saving the user:" + err.message);
+    res.status(400).send("ERROR  :" + err.message);
   }
 });
 // Get user by email
