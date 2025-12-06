@@ -73,7 +73,10 @@
 - Never Trust req.body
 
 ## Ep-09
-
+- Validate data in Signup API
+- install bcrypt package
+- Create PasswordHash using bcrypt.hash & save the user is excrupted passsword
+- 
 
 
 

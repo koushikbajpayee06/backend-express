@@ -8,15 +8,12 @@ const bcrypt = require("bcrypt")
 app.use(express.json());
 
 app.post("/signup", async (req, res) => {
-
-
-
   try {
     
     validationSignUpData(req);
     const {firstName, lastName, emailId, password}= req.body;
     const passwordHash = await bcrypt.hash(password, 10);
-    console.log(passwordHash);
+    // console.log(passwordHash);
     const user = new User({
       firstName,
       lastName,
@@ -29,6 +26,25 @@ app.post("/signup", async (req, res) => {
     res.status(400).send("ERROR  :" + err.message);
   }
 });
+
+app.post('/login', async(req,res)=>{
+  try{
+    const {emailId, password} = req.body;
+    const user = await User.findOne({emailId:emailId})
+    if(!user){
+      throw new Error("Email id is not present in DB")
+    }
+
+    const isPasswordValid = await bcrypt.compare(password,  user.password);
+    if(isPasswordValid){
+      res.send("Login Successful!!!!")
+    }else{
+      throw new Error("Password is not correct");
+    }
+  }catch(err){
+    res.status(404).send("Error "+ err.message)
+  }
+})
 // Get user by email
 app.get("/user", async (req, res) => {
   const userEmail = req.body.emailId;
@@ -106,6 +122,8 @@ app.patch("/user/:userId", async (req, res) => {
     res.status(404).send("Update Failed:"+ err.message);
   }
 });
+
+
 
 connectDB()
   .then(() => {
