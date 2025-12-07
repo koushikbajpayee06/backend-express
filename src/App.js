@@ -42,7 +42,7 @@ app.post('/login', async(req,res)=>{
     if(isPasswordValid){
       // Create a jwt token
       const token = jwt.sign({ _id:user._id }, 'DEV@Tinder$790');
-      console.log(token);
+      // console.log(token);
       // Add the token to cookie
       res.cookie("token",token);
       res.send("Login Successful!!!!")
@@ -56,7 +56,8 @@ app.post('/login', async(req,res)=>{
 
 app.post('/profile', async(req,res)=>{
   const cookies = req.cookies;
-  const {token} = cookies;
+  const { token } = cookies;
+  // console.log(cookies);
   // Validate my token
   const decodedMessage = await jwt.verify(token,"DEV@Tinder$790",)
   // console.log(decodedMessage);
