@@ -86,3 +86,4 @@
 - Install jsonwebtoken
 - In Login API, after email and password validation ,create a JWT token and send it to user inside cookies
 - Read the cookie inside your profile API and find the logged in user
+-
