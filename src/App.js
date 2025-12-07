@@ -64,7 +64,7 @@ app.post('/profile', async(req,res)=>{
   const {_id} = decodedMessage
   console.log("Logged in user is: "+_id);
 
-  const user = await User.findById(_id)
+  const user = await User.findById(_id);
 
   res.send(user);
 })
