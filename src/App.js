@@ -55,18 +55,30 @@ app.post('/login', async(req,res)=>{
 });
 
 app.post('/profile', async(req,res)=>{
-  const cookies = req.cookies;
-  const { token } = cookies;
-  // console.log(cookies);
-  // Validate my token
-  const decodedMessage = await jwt.verify(token,"DEV@Tinder$790",)
-  // console.log(decodedMessage);
-  const {_id} = decodedMessage
-  console.log("Logged in user is: "+_id);
+  try
+  {  const cookies = req.cookies;
+    const { token } = cookies;
+    if(!token){
+      throw new Error("Invalid Token");
+    }
+    // console.log(cookies);
+    // Validate my token
+    const decodedMessage = await jwt.verify(token,"DEV@Tinder$790",)
+    // console.log(decodedMessage);
+    const {_id} = decodedMessage
+    // console.log("Logged in user is: "+_id);
 
-  const user = await User.findById(_id);
+    const user = await User.findById(_id);
+    if(!user){
+      throw new Error("User does not exist");
+    }
 
-  res.send(user);
+    res.send(user);
+  }
+  catch(err)
+  {
+    req.status(404).send("ERROR: "+ err.message);
+  }
 })
 
 // Get user by email
