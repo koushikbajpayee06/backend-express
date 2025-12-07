@@ -80,3 +80,9 @@
 - Compare passwords and throw errors if email or password is invalid
 
 ## Ep-10 
+- Install cookie-parser
+- Send a dummy cookie to user
+- Create GET/profile API and check if you get the cookie back
+- Install jsonwebtoken
+- In Login API, after email and password validation ,create a JWT token and send it to user inside cookies
+- Read the cookie inside your profile API and find the logged in user
