@@ -44,7 +44,9 @@ app.post('/login', async(req,res)=>{
       const token = jwt.sign({ _id:user._id }, 'DEV@Tinder$790', {expiresIn:"1d"});
       // console.log(token);
       // Add the token to cookie
-      res.cookie("token",token);
+      res.cookie("token",token,{
+        expires: new Date(Date.now() + 8 * 3600000),
+      });
       res.send("Login Successful!!!!")
     }else{
       throw new Error("Invalid Credentials");
