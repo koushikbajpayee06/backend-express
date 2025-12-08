@@ -41,7 +41,7 @@ app.post('/login', async(req,res)=>{
     const isPasswordValid = await bcrypt.compare(password,  user.password);
     if(isPasswordValid){
       // Create a jwt token
-      const token = jwt.sign({ _id:user._id }, 'DEV@Tinder$790');
+      const token = jwt.sign({ _id:user._id }, 'DEV@Tinder$790', {expiresIn:"1d"});
       // console.log(token);
       // Add the token to cookie
       res.cookie("token",token);
