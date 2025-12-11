@@ -14,11 +14,27 @@ requestRouter.post(
     const toUserId = req.params.toUserId;
     const status = req.params.status;
 
+    const allowedStatus = ["ignored","interested"]
+    if(!allowedStatus.includes(status)){
+      return res
+        .status(400)
+        .json({message:"Invalid status type: " +status })
+    }
+
+
+    const existingConnectionRequest = await ConnectionRequest.findOne({
+      $or:[
+        {fromUserId,toUserId},
+        {fromUserId:toUserId, toUserId:fromUserId}
+      ]
+    })
+    
     const connectionRequest = new ConnectionRequest({
       fromUserId, 
       toUserId , 
       status , 
-    }) ;
+    });
+    
      const data = await connectionRequest.save()
      res.json({
       message:"Connection request send successfully",
