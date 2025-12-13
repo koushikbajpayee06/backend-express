@@ -106,12 +106,13 @@
 - Test app APIs
 - Make sure you validate all data in every POST, PATCH apis
 
-##
+## EP-12
 - Create a Connection Request Schema
 - Send Connection Request API
 - Proper Validation of Data
 - Think about ALL corner cases
-- $ or query and $and query in mongoose
+- $or query and $and query in mongoose - https://www.mongodb.com/docs/manual/reference/operator/query-logical
+- schema.pre ("save") function
 - read more about indexes in MongoDB
 - Why do we need index in DB?
 - What is the advantages and disadvantage of creating index?
