@@ -107,5 +107,12 @@
 - Make sure you validate all data in every POST, PATCH apis
 
 ##
-
-
+- Create a Connection Request Schema
+- Send Connection Request API
+- Proper Validation of Data
+- Think about ALL corner cases
+- $ or query and $and query in mongoose
+- read more about indexes in MongoDB
+- Why do we need index in DB?
+- What is the advantages and disadvantage of creating index?
+- Read this article about compound indexes - https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
