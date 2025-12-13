@@ -117,3 +117,4 @@
 - Why do we need index in DB?
 - What is the advantages and disadvantage of creating index?
 - Read this article about compound indexes - https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
+- ALWAYS THINK ABOUT CORNER CASES
