@@ -121,3 +121,5 @@
 
 ## EP-13
 - Write code with proper validations for POST /request/review/:status/:requestId;
+- Thought process - POST vs GET
+- 
