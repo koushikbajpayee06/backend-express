@@ -10,6 +10,7 @@ const USER_SAFE_DATA = "firstName lastName photoUrl gender about skills"
 // Get all the pending connection requests for the loggedIn User
 userRouter.get("/user/requests/recived", userAuth, async(req,res)=>{
     try{
+        
         const loggedInUser = req.user;
         const connectionRequests = await ConnectionRequest.find({
             toUserId :loggedInUser._id,
@@ -59,6 +60,11 @@ userRouter.get("/user/connections",userAuth, async(req,res)=>{
 userRouter.get('/feed', userAuth, async(req,res)=>{
     try{
         const loggedInUser = req.user;
+        const page = parseInt(req.query.page) || 1;
+        let limit = parseInt(req.query.limit) || 10;
+        const skip = (page-1)*limit; 
+        limit = limit > 50 ? 50 : limit;
+
         const connectionRequest = await ConnectionRequest.find({
             $or:[
                 {fromUserId:loggedInUser._id},
@@ -79,7 +85,7 @@ userRouter.get('/feed', userAuth, async(req,res)=>{
                     {_id:{ $nin:Array.from(hideUsersFromFeed) },},
                     {_id:{$ne:loggedInUser._id}}
                 ],
-            }).select(USER_SAFE_DATA);
+            }).select(USER_SAFE_DATA).skip(skip).limit(limit);
 
         res.send(users);
     }catch(err){
