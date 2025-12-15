@@ -124,4 +124,4 @@
 - Thought process - POST vs GET
 - Read about ref and populate
 - Create GET /user/requests/recived with all the checks.
-- Create GET user/connections API
+- Create GET user/connections API with all validations
