@@ -10,8 +10,9 @@ const authRouter = require('./routes/auth');
 const profileRouter = require('./routes/proflie');
 const requestRouter = require('./routes/requests');
 const userRouter = require('./routes/user');
+const cors = require('cors');
 
-
+app.use(cors());
 app.use('/', authRouter);
 app.use('/', profileRouter);
 app.use('/', requestRouter);
