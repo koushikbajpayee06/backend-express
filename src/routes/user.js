@@ -79,7 +79,7 @@ userRouter.get('/feed', userAuth, async(req,res)=>{
                     {_id:{ $nin:Array.from(hideUsersFromFeed) },},
                     {_id:{$ne:loggedInUser._id}}
                 ],
-            });
+            }).select(USER_SAFE_DATA);
 
         res.send(users);
     }catch(err){
