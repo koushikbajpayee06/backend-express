@@ -4,7 +4,7 @@ const profileRouter = express.Router();
 const { userAuth } = require('../middlewares/auth')
 const {validateEditProfileData} = require('../utills/validation')
 
-profileRouter.post('/profile/view',userAuth, async(req,res)=>{
+profileRouter.get('/profile/view',userAuth, async(req,res)=>{
   try
   {   
     const user = req.user;
