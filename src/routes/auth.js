@@ -18,6 +18,7 @@ authRouter.post("/signup", async (req, res) => {
       emailId,
       password:passwordHash,
     });
+    
     const saveUser = await user.save();
     const token = await saveUser.getJWT();
       
